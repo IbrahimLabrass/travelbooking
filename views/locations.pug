@@ -1,0 +1,35 @@
+extends layout
+block vars 
+    -var locationPageActive= "active"
+block title   
+  title TravelExperts Locations
+block content
+  main#main
+      // portfolio
+  section#Locations.portfolio
+    .container
+      .section-title(data-aos='fade-in' data-aos-delay='100')
+        h2 Locations
+        p
+          | Take a peek at the locations we offer support for! We help you find affordable yet cozy hotels, create outstanding
+          | travel itineraries, and most importantly fit in must-visit restaurants for foodies.
+      .row(data-aos='fade-in')
+        .col-lg-12.d-flex.justify-content-center
+          ul#portfolio-flters
+            li.filter-active(data-filter='*') All
+            li(data-filter='.filter-america') Americas
+            li(data-filter='.filter-europe') Europe
+            li(data-filter='.filter-asia') Asia
+
+      .row.portfolio-container(data-aos='fade-up')
+        each location in locations 
+            .col-lg-4.col-md-6.portfolio-item(class=`filter-${location.bodyClass}`)
+                a(href=`/packages/${location.locationName}` title=`More Details on ${location.locationName}`)  
+                    .portfolio-wrap
+                        img.img-fluid(src=`/media/MainPage/${location.picName}.jpg` alt=`${location.locationName}`)
+                        .portfolio-lightbox
+                          .caption= `${location.locationName}`      
+      
+      
+  
+      
